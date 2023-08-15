@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    ext_lib = dlopen("/home/jaron/cprog/core/task1/libopdyn.so", RTLD_LAZY);
+    ext_lib = dlopen("./libopdyn.so", RTLD_LAZY);
     if (ext_lib == NULL) {
         printf("%s\n", dlerror());
         exit(EXIT_FAILURE);
