@@ -17,7 +17,8 @@ static char *msg;
 static int res;
 
 static ssize_t read_proc(struct file *filp, char *buf, size_t count, loff_t *offp) {
-    if (count > temp) count = temp;
+    if (count > temp)
+        count = temp;
     temp = temp - count;
     res = copy_to_user(buf, msg, count);
     if (count == 0)
@@ -39,8 +40,8 @@ static const struct proc_ops proc_fops = {
 };
 
 static void create_new_proc_entry(void) {
-    proc_create("helol",0,NULL,&proc_fops);
-    msg=kmalloc(10*sizeof(char), GFP_KERNEL);
+    proc_create("helol", 0, NULL, &proc_fops);
+    msg = kmalloc(10 * sizeof(char), GFP_KERNEL);
 }
 
 
@@ -50,7 +51,7 @@ static int proc_init(void) {
 }
 
 static void proc_cleanup(void) {
-    remove_proc_entry("helol",NULL);
+    remove_proc_entry("helol", NULL);
     kfree(msg);
 }
 
